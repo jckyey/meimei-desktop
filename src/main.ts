@@ -115,7 +115,7 @@ async function checkForUpdate(manual: boolean): Promise<void> {
   if (updateBusy) return;
   updateBusy = true;
   try {
-    const update = await check();
+    const update = await check({ timeout: 10_000 });
     if (!update) {
       if (manual) await message('已经是最新版。', { title: 'Meimei', kind: 'info' });
       return;
